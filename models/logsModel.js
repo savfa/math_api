@@ -56,6 +56,9 @@ exports.filter = function ({ page = 1, perPage = 25, mathTypes }) {
     },*/
     limit: +perPage,
     offset: offset,
+    order: [
+      ['createdAt', 'DESC']
+    ],
     raw: true
   })
     .then(({count, rows}) => {

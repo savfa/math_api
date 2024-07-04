@@ -14,8 +14,8 @@ exports.create = function (req, res) {
     inCorrectAnswersCount,
     timeString
   })
-    .then(({data: log}) => {
-    res.send(log);
+    .then((log) => {
+    res.send({ data: log });
   }).catch((err) => {
     res.status(400);
     res.json({ error: err.message });
@@ -24,9 +24,7 @@ exports.create = function (req, res) {
 
 exports.filter = function (req, res) {
   const { page, perPage } = req.query;
-
   //const { } = req.body;
-
 
   logsModel.filter({page, perPage})
     .then(({ data, links }) => {
